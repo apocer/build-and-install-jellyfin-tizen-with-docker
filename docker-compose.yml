@@ -1,0 +1,16 @@
+services:
+  jellyfin-tizen-builder:
+    image: jellyfin-tizen-builder
+    build: .
+    container_name: jellyfin-tizen-builder
+    hostname: jellyfin-tizen-builder
+    user: jellyfin:jellyfin
+    environment:
+      - RUN_BUILD=false
+      - RUN_DEPLOY=true
+      - SAMSUNG_TV_IP=192.168.50.20
+    volumes:
+      - ./tizen-studio-data:/home/jellyfin/tizen-studio-data
+      - ./data:/home/jellyfin/data
+    ports:
+      - 26099:26099/tcp
